@@ -1,6 +1,6 @@
 const alert = document.querySelector('.alert');
 const form = document.querySelector('.grocery-form');
-const grocery = document.querySelector('.grocery');
+const grocery = document.getElementById('.grocery');
 const submitBtn = document.querySelector('.submit-btn');
 const container = document.querySelector('.grocery-container');
 const list = document.querySelector('.grocery-list');
@@ -16,7 +16,7 @@ form.addEventListener('submit', addItem);
 function addItem(e) {
   e.preventDefault();
   const value = grocery.value;
-
+  
   const id = new Date().getTime().toString();
   if (value && !editFlag) {
     const element = document.createElement("article");
@@ -33,10 +33,11 @@ function addItem(e) {
            <i class="fa fa-trash"></i>
          </button>
        </div>`;
-       list.appendChild(element);
+    list.appendChild(element);
   } else if (value && editFlag) {
     console.log("editing");
   } else {
     alert.textContent = "empty value";
+    alert.classList.add("alert-danger")
   }
 }
